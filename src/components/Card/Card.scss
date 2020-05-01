@@ -1,0 +1,86 @@
+.card {
+    font-size: 17px;
+    font-family: monospace;
+    position: relative;
+    width: 54%;
+    min-height: 270px;
+    height: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    color: #bebebe;
+    font-weight: 600;
+    text-shadow: 0.5px 0.5px 1px black;
+    box-shadow: 3px 3px 7px black, -3px -3px 7px black;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    background-color: rgba(80,93,125, 0.7);
+    justify-content: space-around;
+    &:hover {
+        box-shadow: 4px 4px 7px gray, -4px 4px 7px gray;
+        background-color: rgba(80,93,125, 1);
+    }
+    .details {
+        width: 57%;
+        h4 {
+            font-size: 26px;
+        }
+        p {
+            font-size: 16px;
+            height: 39px;
+            overflow: hidden;
+        }
+    }
+    .location {
+        position: absolute;
+        bottom: 19px;
+        height: 30px;
+        display: flex;
+        right: 20px;
+        img {
+            display: block;
+            width: 27px;
+            margin-right: 10px;
+        }
+        span {
+            padding-top: 3px;
+            font-style: italic;
+        }
+    }
+    >span {
+        text-align: center;
+	    display: block;
+        font-weight: 100;
+        margin: 0;
+        margin-bottom: 5px;
+        width: 100%;
+        border-radius: 6px;
+        padding: 3px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        &:first-child {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+         a{
+            color: white;
+            text-decoration: none;
+            &:hover {
+                color: gray;
+            }
+         }
+        span {
+            cursor: pointer;
+            &:hover {
+                color: lightgray;
+            }
+        }
+    }
+    >img {
+        display: block;
+        width: 217px;
+        height: 217px;
+        margin: 5px;
+        border-radius: 50%;
+    }
+}

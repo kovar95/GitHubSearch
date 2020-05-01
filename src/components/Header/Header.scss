@@ -1,0 +1,29 @@
+header {
+    background-color: #0a0c3d;
+    border-radius: 0 0 50px 50px;
+    opacity: 0.9;
+    box-shadow: 1px 1px 4px #3c3270;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    div{
+        &.wrapper {
+            display: flex;
+            justify-content: space-around;
+            width: 1000px;
+            margin: 0 auto;
+            padding: 5px;
+            img {
+                &.logo {
+                    display: block;
+                    width: 47px;
+                    padding: 3px;
+                    margin: 2px;
+                }
+            }
+        }
+    }
+    
+}

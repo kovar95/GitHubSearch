@@ -1,0 +1,80 @@
+.repo {
+    font-size: 17px;
+    font-family: monospace;
+    position: relative;
+    width: 23%;
+    margin: 20px 2px;
+    padding: 20px;
+    color: #bebebe;
+    font-weight: 600;
+    text-shadow: 0.5px 0.5px 1px black;
+    box-shadow: 3px 3px 7px black, -3px -3px 7px black;
+    text-decoration: none;
+    background: linear-gradient(-45deg, #505F7E, #18254F);
+    opacity: 0.9;
+    &:hover {
+        box-shadow: 4px 4px 7px gray, -4px 4px 7px gray;
+        opacity: 1;
+    }
+    .analitics {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        .forks, .watch, .star {
+            display: flex;
+            width: 50px;
+            img {
+                display: block;
+                height: 14px;
+                width: 14px;
+                margin: 0 5px;
+            }
+            span {
+                font-size: 11px;
+            }
+        }
+    }
+    .license {
+        margin: 25px 5px;
+        font-size: 13px;
+        text-align: center;
+        span {
+            font-style: italic;
+        }
+    }
+    >span {
+        text-align: center;
+	    display: block;
+        font-weight: 100;
+        margin: 0;
+        margin-bottom: 5px;
+        width: 100%;
+        border-radius: 6px;
+        padding: 3px;
+        text-align: center;
+        font-weight: bold;
+        &:first-child {
+            background-color: rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+            overflow: hidden;
+            height: 27px;
+        }
+        &.desc {
+            font-size: 15px;
+            height: 58px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        &.create {
+            font-size: 10px;
+            color: #7d7d7d;
+            position: absolute;
+            left: 12px;
+            bottom: 3px;
+            text-align: left;
+        }
+    }
+}
