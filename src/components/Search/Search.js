@@ -13,7 +13,7 @@ class Search extends Component {
 	  }
 
 	addValue(event) {
-		this.props.onSearchUpdate(event.target.value)
+		this.props.onSearchUpdate(event.target.value);
 	}
 
 	render() {
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-	onDataUpdate : data => dispatch(actionCreators.updateData(data)),
+	onDataUpdate : data => dispatch(actionCreators.updateData(data, 1)),
 	onSearchUpdate : searchedTerm => dispatch(actionCreators.updateSearch(searchedTerm))
   }
 }

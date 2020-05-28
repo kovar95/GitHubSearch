@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 import './App.scss';
 import {Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-import * as actionCreators from './store/ActionCreators';
 import Cards from './components/Cards/Cards';
 import Repos from './components/Repos/Repos';
 import {Header} from './components/Header/Header';
@@ -22,10 +21,8 @@ class App extends React.Component {
 
         <Fragment>
           <Hello/>
-          
           {loading && <Loader/>}
-          <Switch>
-            
+          <Switch> 
             <Route exact path="/" >
               <Header/>
               {!!errors.length && <Errors/>}
@@ -36,7 +33,6 @@ class App extends React.Component {
             <Route exact path='/repos'>
               <Repos/>
             </Route>
-
           </Switch> 
         </Fragment>
     )
@@ -45,21 +41,18 @@ class App extends React.Component {
 
 App.propTypes = {
   loading: PropTypes.bool,
-  errors: PropTypes.array
+  errors: PropTypes.array,
 };
 
 const mapStateToProps = state => {
   return {
-    reposData: state.reposData,
     loading : state.loading,
     errors : state.errors,
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    updateData : data => dispatch(actionCreators.updateData(data)),
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

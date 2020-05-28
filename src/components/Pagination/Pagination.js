@@ -41,7 +41,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updatePagesData : (searchedTerm, slectedPage) => dispatch(actionCreators.updatePagesData(searchedTerm, slectedPage)),
+    updatePagesData : (searchedTerm, slectedPage) => dispatch(actionCreators.updateData(searchedTerm, slectedPage)),
   }
 }
 

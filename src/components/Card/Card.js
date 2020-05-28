@@ -15,16 +15,13 @@ class Card extends Component{
 	}
 
 	componentDidMount() {
-		const {username, onLoad, addError, errors} = this.props;
-		onLoad(true);
+		const {username, addError, errors} = this.props;
 		Communicators.FetchSingleUser(username)
 			.then( myJson => {
 				if(myJson.status === 200) {
 					this.setState({
 						data:myJson.data,
-					}, () => onLoad(false))
-				} else {
-					alert ("Mistake!");
+					})
 				}
 			})
 			.catch(error => {
@@ -72,7 +69,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
 	updateReposData : username => dispatch(actionCreators.updateReposData(username)),
-	onLoad : value => dispatch(actionCreators.isLoading(value)),
 	addError : newErrors => dispatch(actionCreators.updateErrors(newErrors)),
   }
 }

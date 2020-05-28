@@ -81,62 +81,14 @@ const pagination = (current, last) => {
 	return pages;
   }
 
-export const updateData = searchedTerm => {
-	
+export const updateData = (searchedTerm, selectedPage) => {
 	return (dispatch, getState) => {
-		dispatch(isLoading(true));
-		Communicators.Fetch(searchedTerm, 1)
-	    .then( myJson =>  {
-	        if (myJson.status === 200) {
-				let currentPage = 1;
-				let lastPage = Math.ceil(myJson.data.total_count/12);
-				dispatch(updatePages({
-					currentPage: currentPage,
-					lastPage: lastPage,
-				}));
-				dispatch(updateSearch(searchedTerm));
-				dispatch(updatePagination(pagination(currentPage, lastPage)))
-				dispatch(update(myJson.data.items));	
-	        } else {
-				dispatch(update([]));
-			}
-			dispatch(isLoading(false));
-	      })
-	    .catch( error => {
-			let newErrors = [...getState().errors];
-			console.log(newErrors);
-			newErrors.push(error);
-			dispatch(updateErrors(newErrors));
-			dispatch(isLoading(false));
-		});
-	}
-}
-
-export const updateReposData = selectedUser => {
-	return dispatch => {
-		dispatch(isLoading(true));
-		Communicators.FetchReposData(selectedUser)
-	    .then( myJson =>  {
-	        if (myJson.status === 200) {
-	        	dispatch(updateRepos(myJson.data));
-	        } else {
-	        	dispatch(updateRepos([]));
-			}
-			dispatch(isLoading(false));
-			document.documentElement.scrollTop = 0;	
-	      })
-	    .catch( error => alert(`Error: ${error}`));
-	}
-}
-
-export const updatePagesData = (searchedTerm, selectedPage) => {
-	return dispatch => {
 		dispatch(isLoading(true));
 		Communicators.Fetch(searchedTerm, selectedPage)
 	    .then( myJson =>  {
 	        if (myJson.status === 200) {
 				let currentPage = selectedPage;
-				let lastPage = Math.ceil(myJson.data.total_count/12);
+				let lastPage = Math.ceil(myJson.data.total_count/10);
 				dispatch(updatePages({
 					currentPage: currentPage,
 					lastPage: lastPage,
@@ -149,7 +101,34 @@ export const updatePagesData = (searchedTerm, selectedPage) => {
 			}
 			dispatch(isLoading(false));
 	      })
-	    .catch( error => alert(`Error: ${error}`));
+		.catch( error => {
+			let newErrors = [...getState().errors];
+			newErrors.push(error);
+			dispatch(updateErrors(newErrors));
+			dispatch(isLoading(false));
+		});
+	}
+}
+
+export const updateReposData = selectedUser => {
+	return (dispatch, getState) => {
+		dispatch(isLoading(true));
+		Communicators.FetchReposData(selectedUser)
+	    .then( myJson =>  {
+	        if (myJson.status === 200) {
+	        	dispatch(updateRepos(myJson.data));
+	        } else {
+	        	dispatch(updateRepos([]));
+			}
+			dispatch(isLoading(false));
+			document.documentElement.scrollTop = 0;	
+	      })
+		.catch( error => {
+			let newErrors = [...getState().errors];
+			newErrors.push(error);
+			dispatch(updateErrors(newErrors));
+			dispatch(isLoading(false));
+		});
 	}
 }
 
